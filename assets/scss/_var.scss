@@ -1,0 +1,136 @@
+//$resizeRatio : 0.66;
+$resizeRatio: 0.7;
+
+$image-path: "../images/";
+
+$device-pc-width: 767px;
+
+/* layout */
+$header-height: 95px;
+$header-height-pc: 100px;
+
+$content-container-width: 1640px;
+
+$content-width-mobile: 768px;
+$content-width-laptop: 1024px;
+$content-width-wide: 1300px;
+$content-width-container: 1640px;
+
+$logobar-height: 59px;
+$footer-btn-height: 56px;
+
+$form-height: 40px;
+
+/* colors */
+$color-title-border: #868686;
+$color-form-border: #e2e2e2;
+$color-row-border: #f0f0f0;
+
+$color-normal: #595959;
+$color-sub: #070707;
+$color-second: #848484;
+$color-primary: #f29639;
+
+$color-button-gray: #4d4d4d;
+
+$color-main: #146bd1;
+$color-red: #e81637;
+$color-border: #949eaf;
+$color-disabled: #ccd1d9;
+$disabled-color: #ccd1d9;
+$color-black: #191919;
+$color-brown-grey: #999999;
+$color-pale-brown: #ad8c72;
+
+$btn-size-range: 8px;
+$btn-size-xxs: 14px;
+$btn-size-xs: $btn-size-xxs + $btn-size-range;
+$btn-size-small: $btn-size-xs + $btn-size-range;
+$btn-size-default: $btn-size-small + $btn-size-range;
+$btn-size-large: $btn-size-default + $btn-size-range - 4;
+$btn-size-xl: $btn-size-large + $btn-size-range;
+
+@mixin until-to($mode: mobile) {
+  @if $mode==mobile {
+    @media screen and (max-width: $content-width-mobile) {
+      @content;
+    }
+  } @else if $mode==laptop {
+    @media screen and (max-width: $content-width-laptop) {
+      @content;
+    }
+  } @else if $mode==wide {
+    @media screen and (max-width: $content-width-wide) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $mode) {
+      @content;
+    }
+  }
+}
+
+/* responsive */
+@mixin responsive-to($mode: mobile) {
+  @if $mode==mobile {
+    @media screen and (min-width: $content-width-mobile) {
+      @content;
+    }
+  } @else if $mode==laptop {
+    @media screen and (min-width: $content-width-laptop) {
+      @content;
+    }
+  } @else if $mode==wide {
+    @media screen and (min-width: $content-width-wide) {
+      @content;
+    }
+  } @else if $mode==container {
+    @media screen and (min-width: $content-width-container) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $mode) {
+      @content;
+    }
+  }
+}
+
+@mixin drawX($color: #000, $width: 8px) {
+  &:before {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: $width;
+    height: 1px;
+    display: block;
+    margin-left: -($width/2);
+    margin-top: 0;
+    transform: rotate(45deg);
+    content: "";
+    background-color: $color;
+  }
+
+  &:after {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: $width;
+    height: 1px;
+    display: block;
+    margin-left: -($width/2);
+    margin-top: 0;
+    transform: rotate(-45deg);
+    content: "";
+    background-color: $color;
+  }
+}
+
+@mixin align-center-middle($w, $h) {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: #{$w}px;
+  height: #{$h}px;
+  margin-left: -#{$w/2}px;
+  margin-top: -#{$h/2}px;
+}

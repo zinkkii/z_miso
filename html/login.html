@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>미소앤의원피부과</title>
+
+  <link rel="stylesheet" href="../assets/css/style2.css">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+</head>
+
+<body>
+
+
+
+  <div id="wrap">
+
+    <!-- s : 모바일 하단 메뉴 -->
+    <div id="bottom-menu">
+      <ul>
+        <li>
+          <a href="#" onclick="handleOpenConsulting()">
+            <span class="icon icon1"></span>
+            상담신청
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon icon2"></span>
+            대표전화
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon icon3"></span>
+            카톡상담
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon icon4"></span>
+            블로그
+          </a>
+        </li>
+        <li>
+          <a href="#section1">
+            <span class="icon icon5"></span>
+            TOP
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- e : 모바일 하단 메뉴 -->
+
+    <!-- s : 헤더 -->
+    <div id="header" class="bg" data-none-scroll>
+
+      <div class="contents-container">
+        <h1 class="logo"><a href="#"><span></span></a></h1>
+
+        <button class="btn-menu" onclick="handleOpenMenu()"></button>
+
+        <div class="aside-menus" id="aside-menus">
+          <div class="wrapper">
+            <div class="aside-close">
+              <button class="btn-close" onclick="handleOpenMenu()"></button>
+            </div>
+            <ul class="menus">
+              <li>
+                <a href="#"><span>미소앤소개</span></a>
+                <ul class="depth2">
+                  <li><a href="#">병원소개</a></li>
+                  <li><a href="#">병원 둘러보기</a></li>
+                  <li><a href="#">진료시간 · 오시는 길</a></li>
+                  <li><a href="#">공지사항</a></li>
+                </ul>
+              </li>
+              <li><a href="#"><span>리프팅 윤곽</span></a>
+                <ul class="depth2">
+                  <li><a href="./lifting/lifting01.html">인모드</a></li>
+                  <li><a href="./lifting/lifting02.html">슈링크 유니버스</a></li>
+                  <li><a href="./lifting/lifting03.html">볼뉴머</a></li>
+                  <li><a href="./lifting/lifting04.html">윤곽주사 · 브이올렛</a></li>
+                  <li><a href="./lifting/lifting05.html">실리프팅</a></li>
+                </ul>
+              </li>
+              <li><a href="#"><span>색소 미백</span></a>
+                <ul class="depth2">
+                  <li><a href="#">올케어 색소 프로그램</a></li>
+                  <li><a href="#">색소치료</a></li>
+                  <li><a href="#">화이트닝</a></li>
+                </ul>
+              </li>
+              <li><a href="#"><span>여드름 흉터</span></a>
+                <ul class="depth2">
+                  <li><a href="#">올케어 여드름 프로그램</a></li>
+                  <li><a href="#">흉터 · 모공</a></li>
+                </ul>
+              </li>
+              <li><a href="#"><span>주름 재생</span></a>
+                <ul class="depth2">
+                  <li><a href="#">보톡스 · 필러</a></li>
+                  <li><a href="#">스킨부스터</a></li>
+                </ul>
+              </li>
+              <li><a href="#"><span>바디 관리</span></a>
+                <ul class="depth2">
+                  <li><a href="#">아삭아삭 비만 프로그램</a></li>
+                  <li><a href="#">레이저 제모</a></li>
+                </ul>
+              </li>
+              <li><a href="#"><span>전후사진</span></a>
+                <ul class="depth2">
+                  <li><a href="#">전후사진</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <ul class="utils">
+              <li><a href="#">로그인</a></li>
+              <li><a href="#">회원가입</a></li>
+            </ul>
+          </div>
+          <div class="bg" onclick="handleOpenMenu()"></div>
+        </div>
+      </div>
+      <!-- <div class="all-menus"></div> -->
+
+
+    </div>
+    <!-- e : 헤더 -->
+
+
+    <div id="container">
+
+      <!-- s : 로그인 -->
+      <div class="auth-section">
+
+        <div class="title-area">
+          <h3 class="title"><img src="../assets/images/auth/text-login@3x.png" alt="Login"></h3>
+        </div>
+
+        <div class="auth-form">
+
+          <div class="forms">
+            <div class="form-group">
+              <div class="form-subject">아이디</div>
+              <div class="form-content">
+                <input type="text" class="form-text full" placeholder="아이디를 입력해주세요.">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-subject">비밀번호</div>
+              <div class="form-content">
+                <input type="password" class="form-text full" placeholder="비밀번호를 입력해주세요.">
+              </div>
+            </div>
+          </div>
+
+          <div class="auto-login">
+            <input id="auto-login" type="checkbox" class="custom-checkbox">
+            <label for="auto-login">로그인 상태 유지</label>
+
+          </div>
+
+          <div class="button-group">
+            <button class="button-submit" onclick="openModal('#modal-login-failed')">로그인</button>
+          </div>
+
+          <div class="links">
+            <a href="./join.html">회원가입</a>
+            <div>
+              <a href="./find-id.html">아이디</a>/<a href="./find-password.html">비밀번호 찾기</a>
+            </div>
+          </div>
+
+          <!-- <div class="social-login">
+            <div class="titlebar">
+              <h3 class="title">SNS 계정으로 간편 로그인/회원가입</h3>
+            </div>
+            <ul>
+              <li class="naver"><a href="#"><img src="../assets/images/sns-naver@3x.png" alt="Naver"></a></li>
+              <li class="kakao"><a href="#"><img src="../assets/images/sns-kakao@3x.png" alt="Kakao"></a></li>
+              <li class="google"><a href="#"><img src="../assets/images/sns-google@3x.png" alt="Google"></a></li>
+            </ul>
+          </div> -->
+        </div>
+
+      </div>
+      <!-- e : 로그인 -->
+
+    </div>
+
+  </div>
+
+
+  <!-- s : 로그인 실패 -->
+  <div class="modal modal-alert" id="modal-login-failed">
+    <div class="modal-body">
+      아이디 또는 비밀번호를 다시 확인하세요.<br />
+      등록되지 않은 아이디이거나,<br />
+      아이디 또는 비밀번호를 잘못 입력하셨습니다.
+    </div>
+    <div class="modal-footer">
+      <button class="btn-confirm" onclick="closeModal()">확인</button>
+    </div>
+  </div>
+  <!-- e : 로그인 실패 -->
+
+  <div class="modal-bg" onclick="closeModal()"></div>
+
+  <script src="../assets/js/util.js"></script>
+  <script src="../assets/js/common.js"></script>
+
+
+</body>
+
+</html>

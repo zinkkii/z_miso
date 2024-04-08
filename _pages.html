@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>미소엔의원 페이지 목록</title>
+  <style>
+    body {
+      padding: 20px;
+      position: relative;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      font-size: 12px;
+      color: #222;
+      line-height: 1.5em;
+      font-family: 'NanumGothic';
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 auto;
+    }
+
+    table th,
+    table td {
+      border: 1px solid #7992b9;
+      padding: 2px 10px;
+      word-break: keep-all
+    }
+
+    table th {
+      background: #283c5d;
+      color: #fff;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    table td a {
+      color: #283c5d;
+      text-decoration: none;
+    }
+
+    table td a:hover {
+      text-decoration: underline;
+    }
+
+    table tbody tr:hover {
+      background-color: #ecf8fc;
+    }
+
+    .noteTable {
+      display: table;
+      width: 100%;
+    }
+
+    .noteTable .date {
+      display: table-cell;
+      color: #ff523c;
+      width: 40px;
+    }
+
+    .noteTable .note {
+      display: table-cell;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .bg {
+      background: #fff5f5;
+    }
+
+    ul.float {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+
+    ul.float li {
+      list-style: none;
+      border: 1px solid #ccc;
+      padding: 2px 5px;
+      display: inline-block;
+    }
+
+    .end {
+      background: #ffffcc;
+    }
+
+    .ing {
+      background: #f6b1a6;
+    }
+
+    .list {
+      text-align: center;
+      padding: 0 0 20px;
+    }
+
+    .list a {
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .list a:hover {
+      text-decoration: underline;
+    }
+
+    .box {
+      border: 2px dotted #aaa;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .box>ul {
+      display: inline-block;
+      text-align-last: left;
+    }
+  </style>
+</head>
+
+
+<body>
+  <h1>미소엔의원 페이지 목록</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Depth 1</th>
+        <th>Depth 2</th>
+        <th>File</th>
+        <th>pageLink</th>
+        <th>--</th>
+      </tr>
+    </thead>
+    <tbody id="pageList">
+      <tr class="end">
+        <td>메인</td>
+        <td>메인</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/index.html">index.html</a></td>
+        <td></td>
+      </tr>
+      <tr class="end">
+        <td>회원</td>
+        <td>로그인</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/login.html">login.html</a></td>
+        <td>로그인 버튼 클릭 시 로그인 실패 모달 팝업</td>
+      </tr>
+      <tr class="end">
+        <td></td>
+        <td>회원가입</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/join.html">join.html</a></td>
+        <td>약관동의 폼과 회원가입 폼</td>
+      </tr>
+
+      <tr class="end">
+        <td></td>
+        <td>아이디찾기</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/find-id.html">find-id.html</a></td>
+        <td></td>
+      </tr>
+
+      <tr class="end">
+        <td></td>
+        <td>비밀번호찾기</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/find-password.html">find-password.html</a></td>
+        <td></td>
+      </tr>
+
+      <tr class="end">
+        <td></td>
+        <td>회원정보수정</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/user-edit.html">user-edit.html</a></td>
+        <td>회원탈퇴 모달 팝업</td>
+      </tr>
+
+      <tr class="end">
+        <td>소개</td>
+        <td>병원소개</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/intro.html">intro.html</a></td>
+        <td></td>
+      </tr>
+      <tr class="end">
+        <td></td>
+        <td>병원 둘러보기</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/gallery.html">gallery.html</a></td>
+        <td></td>
+      </tr>
+      <tr class="end">
+        <td></td>
+        <td>진료시간・오시는길</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/location.html">location.html</a></td>
+        <td></td>
+      </tr>
+      <tr class="end">
+        <td></td>
+        <td>공지사항 목록</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/notice.html">notice.html</a></td>
+        <td></td>
+      </tr>
+      <tr class="end">
+        <td></td>
+        <td>공지사항 상세</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/notice-detail.html">notice-detail.html</a></td>
+        <td></td>
+      </tr>
+      <tr class="end">
+        <td></td>
+        <td>전후사진</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/photo.html">photo.html</a></td>
+        <td></td>
+      </tr>
+
+      <tr class="end">
+        <td>시술상세</td>
+        <td>리프팅윤곽 - 인모드</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/lifting01.html">lifting01.html</a></td>
+        <td></td>
+      </tr>
+      <tr class="end">
+        <td></td>
+        <td>리프팅윤곽 - 슈링크 유니버스</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/lifting02.html">lifting02.html</a></td>
+        <td></td>
+      </tr>
+      <tr class="end">
+        <td></td>
+        <td>리프팅윤곽 - 볼뉴머 리프팅</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/lifting03.html">lifting03.html</a></td>
+        <td></td>
+      </tr>
+      <tr class="end">
+        <td></td>
+        <td>리프팅윤곽 - 시그니처 리프팅</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/lifting04.html">lifting04.html</a></td>
+        <td></td>
+      </tr>
+      <tr class="end">
+        <td></td>
+        <td>리프팅윤곽 - 실리프팅</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/lifting05.html">lifting05.html</a></td>
+        <td></td>
+      </tr>
+
+      <tr class="end">
+        <td></td>
+        <td>색소미백 - 올케어 색소 프로그램</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/whitening01.html">whitening01.html</a></td>
+        <td></td>
+      </tr>
+
+      <tr class="end">
+        <td></td>
+        <td>색소미백 - 레이저 토닝</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/whitening02.html">whitening02.html</a></td>
+        <td></td>
+      </tr>
+
+      <tr class="end">
+        <td></td>
+        <td>여드름 흉터 - 올케어 여드름 프로그램</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/acne01.html">acne01.html</a></td>
+        <td></td>
+      </tr>
+
+      <tr class="end">
+        <td></td>
+        <td>여드름 흉터 - 흉터·모공 치료</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/acne02.html">acne02.html</a></td>
+        <td></td>
+      </tr>
+
+      <tr class="end">
+        <td></td>
+        <td>주름재생 - 보톡스·필러</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/regenerate01.html">regenerate01.html</a></td>
+        <td></td>
+      </tr>
+
+      <tr class="end">
+        <td></td>
+        <td>주름재생 - 스킨부스터</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/regenerate02.html">regenerate02.html</a></td>
+        <td></td>
+      </tr>
+
+      <tr class="end">
+        <td></td>
+        <td>바디관리 - 아삭아삭 비만 프로그램</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/body01.html">body01.html</a></td>
+        <td></td>
+      </tr>
+
+      <tr class="end">
+        <td></td>
+        <td>바디관리 - 레이저제모</td>
+        <td>/html</td>
+        <td><a target="_blank" href="html/body02.html">body02.html</a></td>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
+  <script>
+    var leng = document.querySelectorAll('tbody td a');
+  </script>
+</body>
+
+</html>

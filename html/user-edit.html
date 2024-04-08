@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>미소앤의원피부과</title>
+
+  <link rel="stylesheet" href="../assets/css/style2.css">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+</head>
+
+<body>
+
+
+
+  <div id="wrap">
+
+    <!-- s : 모바일 하단 메뉴 -->
+    <div id="bottom-menu">
+      <ul>
+        <li>
+          <a href="#" onclick="handleOpenConsulting()">
+            <span class="icon icon1"></span>
+            상담신청
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon icon2"></span>
+            대표전화
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon icon3"></span>
+            카톡상담
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon icon4"></span>
+            블로그
+          </a>
+        </li>
+        <li>
+          <a href="#section1">
+            <span class="icon icon5"></span>
+            TOP
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- e : 모바일 하단 메뉴 -->
+
+    <!-- s : 헤더 -->
+    <div id="header" class="bg" data-none-scroll>
+
+      <div class="contents-container">
+        <h1 class="logo"><a href="#"><span></span></a></h1>
+
+        <button class="btn-menu" onclick="handleOpenMenu()"></button>
+
+        <div class="aside-menus" id="aside-menus">
+          <div class="wrapper">
+            <div class="aside-close">
+              <button class="btn-close" onclick="handleOpenMenu()"></button>
+            </div>
+            <ul class="menus">
+              <li>
+                <a href="#"><span>미소앤소개</span></a>
+                <ul class="depth2">
+                  <li><a href="#">병원소개</a></li>
+                  <li><a href="#">병원 둘러보기</a></li>
+                  <li><a href="#">진료시간 · 오시는 길</a></li>
+                  <li><a href="#">공지사항</a></li>
+                </ul>
+              </li>
+              <li><a href="#"><span>리프팅 윤곽</span></a>
+                <ul class="depth2">
+                  <li><a href="./lifting/lifting01.html">인모드</a></li>
+                  <li><a href="./lifting/lifting02.html">슈링크 유니버스</a></li>
+                  <li><a href="./lifting/lifting03.html">볼뉴머</a></li>
+                  <li><a href="./lifting/lifting04.html">윤곽주사 · 브이올렛</a></li>
+                  <li><a href="./lifting/lifting05.html">실리프팅</a></li>
+                </ul>
+              </li>
+              <li><a href="#"><span>색소 미백</span></a>
+                <ul class="depth2">
+                  <li><a href="#">올케어 색소 프로그램</a></li>
+                  <li><a href="#">색소치료</a></li>
+                  <li><a href="#">화이트닝</a></li>
+                </ul>
+              </li>
+              <li><a href="#"><span>여드름 흉터</span></a>
+                <ul class="depth2">
+                  <li><a href="#">올케어 여드름 프로그램</a></li>
+                  <li><a href="#">흉터 · 모공</a></li>
+                </ul>
+              </li>
+              <li><a href="#"><span>주름 재생</span></a>
+                <ul class="depth2">
+                  <li><a href="#">보톡스 · 필러</a></li>
+                  <li><a href="#">스킨부스터</a></li>
+                </ul>
+              </li>
+              <li><a href="#"><span>바디 관리</span></a>
+                <ul class="depth2">
+                  <li><a href="#">아삭아삭 비만 프로그램</a></li>
+                  <li><a href="#">레이저 제모</a></li>
+                </ul>
+              </li>
+              <li><a href="#"><span>전후사진</span></a>
+                <ul class="depth2">
+                  <li><a href="#">전후사진</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <ul class="utils">
+              <li><a href="#">로그인</a></li>
+              <li><a href="#">회원가입</a></li>
+            </ul>
+          </div>
+          <div class="bg" onclick="handleOpenMenu()"></div>
+        </div>
+      </div>
+      <!-- <div class="all-menus"></div> -->
+
+
+    </div>
+    <!-- e : 헤더 -->
+
+
+    <div id="container">
+
+      <!-- s : 회원가입 -->
+      <div class="auth-section">
+
+        <div class="title-area">
+          <h3 class="title"><img src="../assets/images/auth/text-mypage@3x.png" alt="My Page"></h3>
+        </div>
+
+        <div class="auth-form">
+
+          <div class="forms">
+            <div class="form-group">
+              <div class="form-subject">아이디</div>
+              <div class="form-content">
+                <input type="text" class="form-text full" placeholder="아이디를 입력해주세요." value="misoenclinic">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-subject">비밀번호</div>
+
+              <div class="form-content form-password">
+                <!-- <input type="checkbox" class="checkbox-visibility">
+                <img src="../assets/images/icon-visibility@3x.png" alt="" class="icon-visibility"> -->
+                <input type="password" class="form-text full" minlength="6" maxlength="16" placeholder="비밀번호를 입력해주세요.">
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <div class="form-subject">비밀번호 확인</div>
+              <div class="form-content">
+                <input type="password" class="form-text full" minlength="6" maxlength="16"
+                  placeholder="비밀번호를 다시 입력해주세요.">
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <div class="form-subject">이름</div>
+              <div class="form-content">
+                <input type="text" class="form-text full" placeholder="이름을 입력해주세요." value="김지휘">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-subject">휴대폰번호</div>
+              <div class="form-content">
+                <input type="text" class="form-text full" placeholder="‘-‘를 제외하고 입력해주세요." value="01012345678">
+              </div>
+
+              <div class="agree-box">
+                <input id="agree-sms" type="checkbox" class="custom-checkbox">
+                <label for="agree-sms">SMS 수신 동의</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-subject">이메일</div>
+              <div class="form-content">
+                <input type="email" class="form-text full" placeholder="이메일을 입력해주세요." value="misoenclinc@misoen.com">
+              </div>
+              <div class="agree-box">
+                <input id="agree-email" type="checkbox" class="custom-checkbox">
+                <label for="agree-email">이메일 수신 동의</label>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="button-group">
+            <button class="button-submit">회원정보수정</button>
+          </div>
+
+          <div class="links">
+            <span></span>
+            <button class="button-leave" onclick="openModal('#modal-leave')">회원탈퇴</button>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- e : 회원가입 -->
+
+    </div>
+
+  </div>
+
+
+
+
+  <!-- s : 약관동의 -->
+  <div class="modal modal-alert" id="modal-leave">
+    <div class="modal-body">
+      이용약관 및 개인정보 수집 이용안내에 모두 동의해주세요.
+    </div>
+    <div class="modal-footer">
+      <button class="btn-confirm" onclick="closeModal()">탈퇴</button>
+      <button class="btn-cancel" onclick="closeModal()">취소</button>
+    </div>
+  </div>
+  <!-- e : 약관동의 -->
+
+  <div class="modal-bg" onclick="closeModal()"></div>
+
+  <script src="../assets/js/util.js"></script>
+  <script src="../assets/js/common.js"></script>
+</body>
+
+</html>

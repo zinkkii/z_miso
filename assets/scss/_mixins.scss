@@ -1,0 +1,1567 @@
+/// Adds a browser prefix to the property
+/// @param {*} $property Property
+/// @param {*} $value Value
+
+@mixin css3-prefix($property, $value) {
+  -webkit-#{$property}: #{$value};
+  -khtml-#{$property}: #{$value};
+  -moz-#{$property}: #{$value};
+  -ms-#{$property}: #{$value};
+  -o-#{$property}: #{$value};
+  #{$property}: #{$value};
+}
+
+@mixin background(
+  $image,
+  $size: auto auto,
+  $position: center center,
+  $repeat: no-repeat
+) {
+  background-image: url($image);
+  -webkit-background-size: $size;
+  -moz-background-size: $size;
+  background-size: $size;
+  background-position: $position;
+  background-repeat: $repeat;
+}
+
+@mixin background2x(
+  $image,
+  $w,
+  $h,
+  $position: center center,
+  $repeat: no-repeat
+) {
+  background-image: url($image);
+  -webkit-background-size: ($w / 2) ($h / 2);
+  -moz-background-size: ($w / 2) ($h / 2);
+  background-size: ($w / 2) ($h / 2);
+  background-position: $position;
+  background-repeat: $repeat;
+}
+
+/// Background Gradient
+/// @param {Color} $startColor [#3C3C3C] - Start Color
+/// @param {Color} $endColor [#999999] - End Color
+
+@mixin background-gradient($startColor: #3c3c3c, $endColor: #999999) {
+  background-color: $startColor;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from($startColor),
+    to($endColor)
+  );
+  background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+  background-image: -moz-linear-gradient(top, $startColor, $endColor);
+  background-image: -ms-linear-gradient(top, $startColor, $endColor);
+  background-image: -o-linear-gradient(top, $startColor, $endColor);
+  background-image: linear-gradient(top, $startColor, $endColor);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}');
+}
+
+/// Background Horizontal
+/// @param {Color} $startColor [#3C3C3C] - Start Color
+/// @param {Color} $endColor [#999999] - End Color
+
+@mixin background-horizontal($startColor: #3c3c3c, $endColor: #999999) {
+  background-color: $startColor;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from($startColor),
+    to($endColor)
+  );
+  background-image: -webkit-linear-gradient(left, $startColor, $endColor);
+  background-image: -moz-linear-gradient(left, $startColor, $endColor);
+  background-image: -ms-linear-gradient(left, $startColor, $endColor);
+  background-image: -o-linear-gradient(left, $startColor, $endColor);
+  background-image: linear-gradient(left, $startColor, $endColor);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}', gradientType='1');
+}
+
+/// Background Radial
+/// @param {Color} $startColor [#3C3C3C] - Start Color
+/// @param {Percentage} $startPos [0%] - Start position
+/// @param {Color} $endColor [#999999] - End Color
+/// @param {Percentage} $endPos [100%] - End position
+
+@mixin background-radial(
+  $startColor: #ffffff,
+  $startPos: 0%,
+  $endColor: #000000,
+  $endPos: 100%
+) {
+  background: -moz-radial-gradient(
+    center,
+    ellipse cover,
+    $startColor $startPos,
+    $endColor $endPos
+  );
+  background: -webkit-gradient(
+    radial,
+    center center,
+    0px,
+    center center,
+    100%,
+    color-stop($startPos, $startColor),
+    color-stop($endPos, $endColor)
+  );
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    $startColor $startPos,
+    $endColor $endPos
+  );
+  background: -o-radial-gradient(
+    center,
+    ellipse cover,
+    $startColor $startPos,
+    $endColor $endPos
+  );
+  background: -ms-radial-gradient(
+    center,
+    ellipse cover,
+    $startColor $startPos,
+    $endColor $endPos
+  );
+  background: radial-gradient(
+    ellipse at center,
+    $startColor $startPos,
+    $endColor $endPos
+  );
+}
+
+/// Background Size
+/// @param {Size} $width [100%] - Width
+/// @param {Size} $width [$width] - Height
+/// @require {mixin} css3-prefix
+
+@mixin background-size($width: 100%, $height: $width) {
+  @if type-of($width) == "number" and $height !=null {
+    @include css3-prefix("background-size", $width $height);
+  } @else {
+    @include css3-prefix("background-size", $width);
+  }
+}
+
+/// Background Color Opacity
+/// @param {Color} $color [100%] - Color
+/// @param {Double} $opacity [0.85] - Opacity
+
+@mixin background-opacity($color: #000, $opacity: 0.85) {
+  background: $color;
+  background: rgba($color, $opacity);
+}
+
+/// Border Radius
+/// @param {Size} $radius [5px] - Radius
+/// @require {mixin} css3-prefix
+
+@mixin border-radius($radius: 5px) {
+  @include css3-prefix("border-radius", $radius);
+}
+
+/// Border Radius Separate
+/// @param {Size} $topLeftRadius [5px] - Top Left
+/// @param {Size} $topRightRadius [5px] - Top Right
+/// @param {Size} $bottomLeftRadius [5px] - Bottom Left
+/// @param {Size} $bottomRightRadius [5px] - Bottom Right
+
+@mixin border-radius-separate(
+  $topLeftRadius: 5px,
+  $topRightRadius: 5px,
+  $bottomLeftRadius: 5px,
+  $bottomRightRadius: 5px
+) {
+  -webkit-border-top-left-radius: $topLeftRadius;
+  -webkit-border-top-right-radius: $topRightRadius;
+  -webkit-border-bottom-right-radius: $bottomRightRadius;
+  -webkit-border-bottom-left-radius: $bottomLeftRadius;
+
+  -moz-border-radius-topleft: $topLeftRadius;
+  -moz-border-radius-topright: $topRightRadius;
+  -moz-border-radius-bottomright: $bottomRightRadius;
+  -moz-border-radius-bottomleft: $bottomLeftRadius;
+
+  border-top-left-radius: $topLeftRadius;
+  border-top-right-radius: $topRightRadius;
+  border-bottom-right-radius: $bottomRightRadius;
+  border-bottom-left-radius: $bottomLeftRadius;
+}
+
+/// Box
+/// @param {*} $orient [horizontal] - Orientation
+/// @param {*} $pack [center] - Pack
+/// @param {*} $align [center] - Align
+/// @require {mixin} css3-prefix
+
+@mixin box($orient: horizontal, $pack: center, $align: center) {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+
+  @include css3-prefix("box-orient", $orient);
+  @include css3-prefix("box-pack", $pack);
+  @include css3-prefix("box-align", $align);
+}
+
+/// Box RGBA
+/// @param {Integer} $r [60] - Red
+/// @param {Integer} $g [3] - Green
+/// @param {Integer} $b [12] - Blue
+/// @param {Double} $opacity [0.23] - Opacity
+/// @param {Color} $color [#3C3C3C] - Color
+
+@mixin box-rgba($r: 60, $g: 3, $b: 12, $opacity: 0.23, $color: #3c3c3c) {
+  background-color: transparent;
+  background-color: rgba($r, $g, $b, $opacity);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$color}', endColorstr='#{$color}');
+  zoom: 1;
+}
+
+/// Box Shadow
+/// @param {Size} $x [2px] - X
+/// @param {Size} $y [2px] - Y
+/// @param {Size} $blur [5px] - Blur
+/// @param {Color} $color [rgba(0,0,0,.4)] - Color
+/// @param {Boolean} $inset - Inset
+
+@mixin box-shadow(
+  $x: 0,
+  $y: 0,
+  $blur: 2px,
+  $color: rgba(0, 0, 0, 0.4),
+  $inset: ""
+) {
+  @if ($inset != "") {
+    @include css3-prefix("box-shadow", $inset $x $y $blur $color);
+  } @else {
+    @include css3-prefix("box-shadow", $x $y $blur $color);
+  }
+}
+
+/// Box Sizing
+/// @param {*} $type [border-box] - Type
+/// @require {mixin} css3-prefix
+
+@mixin box-sizing($type: border-box) {
+  @include css3-prefix("box-sizing", $type);
+}
+
+/// Columns
+/// @param {Integer} $count [3] - Count
+/// @param {Integer} $gap [10] - Gap
+/// @require {mixin} css3-prefix
+
+@mixin columns($count: 3, $gap: 10) {
+  @include css3-prefix("column-count", $count);
+  @include css3-prefix("column-gap", $gap);
+}
+
+/// Double Borders
+/// @param {Color} $colorOne [#3C3C3C] - Color One
+/// @param {Color} $colorTwo [#999999] - Color Two
+/// @param {Size} $radius [0] - Radius
+/// @require {mixin} css3-prefix
+/// @require {mixin} border-radius
+
+@mixin double-borders($colorOne: #3c3c3c, $colorTwo: #999999, $radius: 0) {
+  border: 1px solid $colorOne;
+
+  @include css3-prefix("box-shadow", 0 0 0 1px $colorTwo);
+
+  @include border-radius($radius);
+}
+
+/// Flex
+/// @param {Integer} $value [1] - Value
+/// @require {mixin} css3-prefix
+
+@mixin flex($value: 1) {
+  @include css3-prefix("flex", $value);
+}
+
+@mixin display-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin display-block {
+  @include css3-prefix("display", "block");
+}
+
+/// Flip
+/// @param {Double} $scaleX [-1] - ScaleX
+/// @require {mixin} css3-prefix
+
+@mixin flip($scaleX: -1) {
+  @include css3-prefix("transform", scaleX($scaleX));
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+/// Font Face
+/// @param {Font} $fontFamily [myFont] - Font Family
+/// @param {String} $eotFileSrc ['myFont.eot'] - Eot File Source
+/// @param {String} $woffFileSrc ['myFont.woff'] - Woff File Source
+/// @param {String} $ttfFileSrc ['myFont.ttf'] - Ttf File Source
+/// @param {String} $svgFileSrc ['myFont.svg'] - Svg File Source
+
+@mixin font-face(
+  $fontFamily: myFont,
+  $eotFileSrc: "myFont.eot",
+  $woffFileSrc: "myFont.woff",
+  $ttfFileSrc: "myFont.ttf",
+  $svgFileSrc: "myFont.svg",
+  $svgFontID: "#myFont"
+) {
+  font-family: $fontFamily;
+  src: url($eotFileSrc) format("eot"), url($woffFileSrc) format("woff"),
+    url($ttfFileSrc) format("truetype"),
+    url($svgFileSrc + $svgFontID) format("svg");
+}
+
+/// Opacity
+/// @param {Double} $opacity [0.5] - Opacity
+/// @require {mixin} css3-prefix
+
+@mixin opacity($opacity: 0.5) {
+  $opacityMultiplied: ($opacity * 100);
+
+  filter: alpha(opacity=$opacityMultiplied);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" +
+    $opacityMultiplied + ")";
+  @include css3-prefix("opacity", $opacity);
+}
+
+/// Outline Radius
+/// @param {Size} $radius [5px] - Radius
+/// @require {mixin} css3-prefix
+
+@mixin outline-radius($radius: 5px) {
+  @include css3-prefix("outline-radius", $radius);
+}
+
+/// Resize
+/// @param {*} $directoin [both] - Direction
+/// @require {mixin} css3-prefix
+
+@mixin resize($direction: both) {
+  @include css3-prefix("resize", $direction);
+}
+
+/// Rotate
+///
+/// CSS Matrix Rotation Calculator http://www.boogdesign.com/examples/transforms/matrix-calculator.html
+/// @param {Double} $deg [0] - Degree
+/// @param {Double} $m11 [0] - M11
+/// @param {Double} $m12 [0] - M12
+/// @param {Double} $m21 [0] - M21
+/// @param {Double} $m22 [0] - M22
+/// @require {mixin} css3-prefix
+
+@mixin rotate($deg: 0, $m11: 0, $m12: 0, $m21: 0, $m22: 0) {
+  @include css3-prefix("transform", rotate($deg + deg));
+  filter: progid:DXImageTransform.Microsoft.Matrix(M11=#{$m11}, M12=#{$m12}, M21=#{$m21}, M22=#{$m22}, sizingMethod='auto expand');
+  zoom: 1;
+}
+
+/// Text Shadow
+/// @param {Size} $x [2px] - X
+/// @param {Size} $y [2px] - Y
+/// @param {Size} $blur [2px] - Blur
+/// @param {Color} $color [rgba(0,0,0,.4)] - Color
+
+@mixin text-shadow($x: 2px, $y: 2px, $blur: 5px, $color: rgba(0, 0, 0, 0.4)) {
+  text-shadow: $x $y $blur $color;
+}
+
+/// Transform
+/// @param {List} $params - Params
+/// @require {mixin} css3-prefix
+
+@mixin transform($params) {
+  @include css3-prefix("transform", $params);
+}
+
+/// Transform-Origin
+/// @param {List} $params - Params
+/// @require {mixin} css3-prefix
+
+@mixin transform-origin($params) {
+  @include css3-prefix("transform-origin", $params);
+}
+
+// Transform-Style
+/// @param {List} $params - Params
+/// @require {mixin} css3-prefix
+
+@mixin transform-style($style: preserve-3d) {
+  @include css3-prefix("transform-style", $style);
+}
+
+/// Transition
+/// @param {List} $properties - Properties
+/// @require {mixin} css3-prefix
+
+@mixin transition($properties...) {
+  @if length($properties) >=1 {
+    @include css3-prefix("transition", $properties);
+  } @else {
+    @include css3-prefix("transition", "all 0.2s ease-in-out 0s");
+  }
+}
+
+/// Triple Borders
+/// @param {Color} $colorOne [#3C3C3C] - Color One
+/// @param {Color} $colorTwo [#999999] - Color Two
+/// @param {Color} $colorThree [#000000] - Color Three
+/// @param {Size} $radius [0] - Radius
+/// @require {mixin} border-radius
+/// @require {mixin} css3-prefix
+
+@mixin triple-borders(
+  $colorOne: #3c3c3c,
+  $colorTwo: #999999,
+  $colorThree: #000000,
+  $radius: 0
+) {
+  border: 1px solid $colorOne;
+
+  @include border-radius($radius);
+
+  @include css3-prefix(
+    "box-shadow",
+    "0 0 0 1px #{$colorTwo}, 0 0 0 2px #{$colorThree}"
+  );
+}
+
+/// Keyframes
+/// @param {*} $animation-name - Animation name
+/// @content [Animation css]
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+/// Animation
+/// @param {*} $str - name duration timing-function delay iteration-count direction fill-mode play-state ([http://www.w3schools.com/cssref/css3_pr_animation.asp](http://www.w3schools.com/cssref/css3_pr_animation.asp))
+/// @require {mixin} css3-prefix
+
+@mixin animation($str) {
+  @include css3-prefix("animation", $str);
+}
+
+///
+/// Generates appearance for a given element.
+///
+/// @author romamatusevich
+///
+/// @link http://caniuse.com/#feat=css-appearance caniuse
+/// @link http://www.w3.org/TR/2004/CR-css3-ui-20040511/#appearance spec
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance MDN
+/// @link http://css-tricks.com/almanac/properties/a/appearance css-tricks
+///
+/// @param {String} $value
+///
+/// @output
+/// ```css
+///   -webkit-appearance: <value>;
+///      -moz-appearance: <value>;
+///           appearance: <value>;
+/// ```
+///
+/// @example
+///   .selector {
+///     @include x-appearance(button);
+///   }
+///
+@mixin appearance($value) {
+  -webkit-appearance: $value;
+  -moz-appearance: $value;
+  appearance: $value;
+}
+
+///
+/// Add Breakpoint greater than the specified device-width.
+///
+/// @author drublic
+///
+/// @link http://caniuse.com/#feat=css-mediaqueries caniuse
+/// @link http://www.w3.org/TR/css3-mediaqueries spec
+///
+/// @param {Number} $device-width
+///
+/// @output
+/// ```css
+///   @media screen and (min-width: <device-width>) {
+///      <content>
+///   }
+/// ```
+///
+/// @example
+/// Note: Please use the CSS unit `em` for device-width in order to stay
+/// responsive.
+/// ```css
+///   .selector {
+///     @include x-at-least(40em) { width: 60%; }
+///   }
+/// ```
+///
+@mixin at-least($device-width) {
+  @media screen and (min-width: $device-width) {
+    @content;
+  }
+}
+
+///
+/// Add Breakpoint until the specified device-width.
+///
+/// @param {Number} $device-width
+///
+/// @output
+/// ```css
+///   @media screen and (max-width: <device-width - 0.01>) {
+///      <content>
+///   }
+/// ```
+///
+/// @example
+///   .selector {
+///     @include x-until(40em) { width: 100%; }
+///   }
+///
+@mixin until($device-width) {
+  @media screen and (max-width: $device-width - 0.01) {
+    @content;
+  }
+}
+
+///
+/// Add Breakpoint between specified device-widths.
+///
+/// @author romamatusevich
+///
+/// @param {String} $point
+/// @param {Number} $bp-mobile-width [640px]
+/// @param {Number} $bp-tablet-width [1024px]
+///
+/// @output
+/// ```css
+///   @media (max-width: <bp-mobile-width>) {
+///      <content>
+///   }
+/// ```
+///
+/// @example
+///   .selector {
+///     @include x-breakpoints(mobile,  320px) { width: 100%; }
+///   }
+///
+@mixin breakpoints($point, $bp-mobile-width: 640px, $bp-tablet-width: 1024px) {
+  $bp-mobile: "(max-width: #{$bp-mobile-width})";
+  $bp-tablet: "(min-width: #{$bp-mobile-width}) and (max-width: #{$bp-tablet-width})";
+  $bp-desktop: "(min-width: #{$bp-tablet-width})";
+
+  @if $point==mobile {
+    @media #{$bp-mobile} {
+      @content;
+    }
+  } @else if $point==tablet {
+    @media #{$bp-tablet} {
+      @content;
+    }
+  } @else if $point==desktop {
+    @media #{$bp-desktop} {
+      @content;
+    }
+  } @else {
+    @warn "You are requesting an invalid breakpoint: `#{$point}`.";
+  }
+}
+
+///
+/// Generates `calc` function which allows mathematical expressions for a given property.
+///
+/// @author romamatusevich
+///
+/// @link http://caniuse.com/calc caniuse
+/// @link http://www.w3.org/TR/css3-values/#calc spec
+///
+/// @param {String} $property
+/// @param {String} $expression
+///
+/// @output
+/// ```css
+///   <property>: -webkit-calc(<expression>);
+///   <property>: calc(<expression>);
+/// ```
+///
+/// @example
+///  .selector {
+///    @include x-calc(width, "600px - 2em");
+///  }
+///
+@mixin calc($property, $expression) {
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
+
+///
+/// Add flex order to element.
+///
+/// @param {Number} $value
+///
+/// @output
+/// ```css
+///   -webkit-box-ordinal-group: <value>;
+///      -moz-box-ordinal-group: <value>;
+///              -ms-flex-order: <value>;
+///               -webkit-order: <value>;
+///                       order: <value>;
+/// ```
+///
+/// @example
+///   .selector {
+///     @include x-order(1);
+///   }
+///
+@mixin order($value) {
+  -webkit-box-ordinal-group: $value; // Chrome 20-, iOS 6-, Safari 3.1 - 6
+  -moz-box-ordinal-group: $value; // FF 19-
+  -ms-flex-order: $value; // IE 10
+  -webkit-order: $value; // Chrome 21 - 28
+  order: $value; // FF 20+, Chrome 29+, Opera 12.1, 17+
+}
+
+///
+/// Add flex wrap to element.
+///
+/// @param {String} $value
+///
+/// @output
+/// ```css
+///    -webkit-flex-wrap: <value>;
+///        -ms-flex-wrap: <value>;
+///            flex-wrap: <value>;
+/// ```
+///
+/// @example
+///   .selector {
+///     @include x-flex-wrap(wrap);
+///   }
+///
+@mixin flex-wrap($value) {
+  // IE 10
+  @if $value==nowrap {
+    -ms-flex-wrap: none;
+  } @else {
+    -ms-flex-wrap: $value;
+  }
+
+  -webkit-flex-wrap: $value; // Chrome 20-, iOS 6-, Safari 3.1 - 6
+  flex-wrap: $value; // FF 28+, Chrome 21+, Opera 12.1, 17+, IE 11
+}
+
+///
+/// Add flex align-content to element.
+///
+/// @param {String} $value
+///
+/// @output
+/// ```css
+///   -webkit-align-content: <value>;
+///      -moz-align-content: <value>;
+///      -ms-flex-line-pack: <value>;
+///           align-content: <value>;
+/// ```
+/// @example
+///   .selector {
+///     @include x-align-content(center);
+///   }
+///
+@mixin align-content($value) {
+  // IE 10
+  @if $value==flex-start {
+    -ms-flex-line-pack: start;
+  } @else if $value==flex-end {
+    -ms-flex-line-pack: end;
+  } @else if $value==space-between {
+    -ms-flex-line-pack: justify;
+  } @else if $value==space-around {
+    -ms-flex-line-pack: distribute;
+  } @else {
+    -ms-flex-line-pack: $value;
+  }
+
+  -webkit-align-content: $value; // Chrome 20-, iOS 6-, Safari 3.1 - 6
+  -moz-align-content: $value; // FF 19-
+  align-content: $value; // FF 20+, Chrome 21+, Opera 12.1, 17+, IE 11
+}
+
+///
+/// Add flex direction to element.
+///
+/// @param {String} $value
+///
+/// @output
+/// ```css
+///    -webkit-box-direction: <value>;
+///       -moz-box-direction: <value>;
+///       -webkit-box-orient: <value>;
+///          -moz-box-orient: <value>;
+///   -webkit-flex-direction: <value>;
+///      -moz-flex-direction: <value>;
+///       -ms-flex-direction: <value>;
+///           flex-direction: <value>;
+/// ```
+///
+/// @example
+///   .selector {
+///     @include x-flex-direction(row-reverse);
+///   }
+///
+@mixin flex-direction($value) {
+  @if $value==row {
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+  } @else if $value==row-reverse {
+    -webkit-box-direction: reverse;
+    -moz-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+  } @else if $value==column {
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+  } @else if $value==column-reverse {
+    -webkit-box-direction: reverse;
+    -moz-box-direction: reverse;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+  }
+
+  -webkit-flex-direction: $value;
+  -moz-flex-direction: $value;
+  -ms-flex-direction: $value;
+  flex-direction: $value;
+}
+
+//todo: add flex-grow, flex-shrink, flex-basis, flex-flow, align-items, align-self, justify-content mixins
+///
+/// Helper for old syntax (for Angles) in linear-gradients.
+///
+/// @param {Number|String} $deg
+///
+/// @return {Number|String} - Return the corrected angle or position for a css gradient
+///
+
+@function angle($deg) {
+  @if type-of($deg) == "number" {
+    @return mod(abs($deg - 450), 360deg);
+  } @else {
+    $position: to + " ";
+
+    @each $pos in $deg {
+      $position: $position + opposite-position($pos) + " ";
+    }
+
+    @return $position;
+  }
+}
+
+///
+/// Get the old direction keyword syntax for gradients, for backward compability.
+///
+/// @param {String} $direction
+///
+/// @return {String}
+///
+@function helper-gradient-angle($direction) {
+  $old-direction: $direction;
+  $veryold-direction: $direction;
+
+  // New Syntax has to be evaluated to old one
+  @if $direction== "to bottom" {
+    $old-direction: "top";
+  } @else if $direction== "to right" {
+    $old-direction: "left";
+  } @else if $direction== "to top" {
+    $old-direction: "bottom";
+  } @else if $direction== "to left" {
+    $old-direction: "right";
+  } @else {
+    $old-direction: angle($direction);
+  }
+
+  // And also for very old syntax
+  @if $direction== "to bottom" {
+    $veryold-direction: "left top, left bottom";
+  } @else if $direction== "to right" {
+    $veryold-direction: "top left, bottom right";
+  } @else if $direction== "to top" {
+    $veryold-direction: "left bottom, left top";
+  } @else if $direction== "to left" {
+    $veryold-direction: "top right, bottom left";
+  } @else {
+    $veryold-direction: angle($direction);
+  }
+
+  @return $old-direction, $veryold-direction;
+}
+
+///
+/// Generates a linear gradient for a given element with a fallback color.
+///
+/// Note: By default this linear-gradient-mixin encourages people to use the
+/// latest CSS-syntax for gradients.
+///
+/// @author drublic
+///
+/// @link http://caniuse.com/#feat=css-gradients caniuse
+/// @link https://drafts.csswg.org/css-images-3/#linear-gradients spec
+///
+/// @require helper-gradient-angle
+///
+/// @param {String | Angle} $direction [to bottom] - Either an angle value or any of `to bottom`, `to right`, `to top` or `to left`
+/// @param {Color} $fallback [#ccc]
+/// @param {Color} $from [#ccc]
+/// @param {Color} $to [#aaa]
+///
+/// @output
+/// ```css
+///   background-color: <fallback>;
+///   background-image: -webkit-gradient(linear, <direction - old converted>, from(<from>), to(<to>));
+///   background-image: -webkit-linear-gradient(<direction - converted>, <from>, <to>);
+///   background-image:         linear-gradient(<direction>, <from>, <to>);
+/// ```
+///
+/// @example
+///   .selector {
+///     @include x-linear-gradient('to bottom', #ccc, #ddd, #bbb);
+///   }
+///
+@mixin linear-gradient(
+  $direction: "to bottom",
+  $fallback: #ccc,
+  $from: #ccc,
+  $to: #aaa
+) {
+  $directions: helper-gradient-angle($direction);
+
+  // Provide a fallback-color
+  background-color: $fallback;
+
+  // Cross-browser linear-gradients
+  background-image: -webkit-gradient(
+    linear,
+    unquote(nth($directions, 2)),
+    from($from),
+    to($to)
+  ); // Android 2.1-3.0
+  background-image: -webkit-linear-gradient(
+    unquote(nth($directions, 1)),
+    $from,
+    $to
+  );
+  background-image: linear-gradient(unquote($direction), $from, $to);
+}
+
+///
+/// A function for prefixing gradients.
+///
+/// @todo define old webkit mode
+///
+/// @param {String} $mode - Either `webkit-old`, `webkit` or `''`
+/// @param {Arglist} $gradient
+///
+/// @returns {String} `-<mode>-linear-gradient(<gradient>)`
+///
+@function prefixed-gradient($mode, $gradient) {
+  $prefix: "-" + $mode + "-";
+
+  // Get angles
+  $angles: helper-gradient-angle("" + nth($gradient, 2));
+  $angle: nth($angles, 1);
+
+  // If unprefixed
+  @if ($mode== "") {
+    $prefix: "";
+    $angle: nth($gradient, 2);
+  }
+
+  // @TODO define old webkit mode
+  @if ($mode== "webkit-old") {
+    $prefix: "-webkit-";
+    $angle: nth($angles, 2);
+  }
+
+  $prefixed: $prefix + "linear-gradient(" + $angle;
+
+  @for $i from 1 through length($gradient) {
+    @if ($i > 2) {
+      $prefixed: append(unquote($prefixed), nth($gradient, $i), comma);
+    }
+  }
+
+  $prefixed: $prefixed + ")";
+
+  @return unquote($prefixed);
+}
+
+///
+/// This mixin generates multiple backgrounds.
+///
+/// @author drublic
+///
+/// @link http://caniuse.com/css-gradients caniuse
+/// @link http://www.w3.org/TR/2011/WD-css3-images-20110217/#linear-gradients spec
+///
+///
+/// @param {Arglist} $backgrounds
+///
+/// @example
+///   .selector {
+///     @include x-multiple-backgrounds(
+///       rgba(0, 0, 0, 0.3),
+///       url('../img/html5_logo.png') top right no-repeat,
+///       (linear-gradient, to bottom, #aaa, #ddd)
+///     );
+///   }
+///
+@mixin multiple-backgrounds($backgrounds...) {
+  $combined-background-webkit-old: ();
+  $combined-background-webkit: ();
+  $combined-background: ();
+  $end: "";
+
+  // Iterate through all backgrounds passed
+  @each $background in $backgrounds {
+    // Prefix gradients
+    @if (type-of($background) ==list) {
+      @if (nth($background, 1) == "linear-gradient") {
+        $combined-background-webkit-old: append(
+          $combined-background-webkit-old,
+          prefixed-gradient("webkit-old", $background),
+          comma
+        );
+        $combined-background-webkit: append(
+          $combined-background-webkit,
+          prefixed-gradient("webkit", $background),
+          comma
+        );
+        $combined-background: append(
+          $combined-background,
+          prefixed-gradient("", $background),
+          comma
+        );
+
+        // Nothing to do for non-gradients
+      } @else {
+        $combined-background-webkit-old: append(
+          $combined-background-webkit-old,
+          $background,
+          comma
+        );
+        $combined-background-webkit: append(
+          $combined-background-webkit,
+          $background,
+          comma
+        );
+        $combined-background: append($combined-background, $background, comma);
+      }
+
+      // Put colors at end of combined background
+    } @else if (type-of($background) ==color) {
+      $end: $background;
+      $background: null;
+    } @else if (type-of($background) ==string) {
+      $combined-background-webkit-old: append(
+        $combined-background-webkit-old,
+        $background,
+        space
+      );
+      $combined-background-webkit: append(
+        $combined-background-webkit,
+        $background,
+        comma
+      );
+      $combined-background: append($combined-background, $background, comma);
+    }
+  }
+
+  // Append color if there is one
+  @if $end != "" {
+    $combined-background-webkit-old: append(
+      $combined-background-webkit-old,
+      $end,
+      space
+    );
+    $combined-background-webkit: append(
+      $combined-background-webkit,
+      $end,
+      comma
+    );
+    $combined-background: append($combined-background, $end, comma);
+  }
+
+  // Only print all prefixed versions if necessary
+  @if ($combined-background !=$combined-background-webkit) {
+    background: unquote($combined-background-webkit-old);
+    background: unquote($combined-background-webkit);
+    background: unquote($combined-background);
+  } @else {
+    background: unquote($combined-background);
+  }
+}
+
+///
+/// This mixin creates (endless) multiple color stops in gradients just with one
+/// call for the mixin.
+///
+/// Note: This mixin does not define a fallback-color for your background as it
+/// is likely you want to add an image or something. Please specify one by
+/// yourself.
+///
+/// @author drublic
+///
+/// @link http://caniuse.com/css-gradients caniuse
+/// @link http://www.w3.org/TR/2011/WD-css3-images-20110217/#linear-gradients spec
+///
+/// @param {Arglist} $args
+///
+/// @output
+/// ```css
+///   background-image: -webkit-linear-gradient(top, <stops[1]>, <stops[2]>, ..., <stops[n]>);
+///   background-image:         linear-gradient(to bottom, <stops[1]>, <stops[2]>, ..., <stops[n]>);
+/// ```
+///
+/// @example
+///   .selector {
+///     @include x-multiple-colored-gradient(
+///         'top',
+///         #f22 0%,
+///         #f2f 15%,
+///         #22f 30%,
+///         #2ff 45%,
+///         #2f2 60%,
+///         #2f2 75%,
+///         #ff2 90%,
+///         #f22 100%
+///     );
+///   }
+///
+@mixin multiple-colored-gradient($args...) {
+  $gradient: ();
+  $pos: nth($args, 1);
+  $pos_newsyntax: ();
+
+  @if not is-valid-keyword-direction($pos) {
+    $pos: "top";
+  }
+
+  // New Syntax
+  @if $pos== "top" {
+    $pos_newsyntax: "to bottom";
+  } @else if $pos== "right" {
+    $pos_newsyntax: "to left";
+  } @else if $pos== "bottom" {
+    $pos_newsyntax: "to top";
+  } @else if $pos== "left" {
+    $pos_newsyntax: "to right";
+  }
+
+  @each $g in $args {
+    @if not is-valid-keyword-direction($g) {
+      $gradient: append($gradient, $g, comma);
+    }
+  }
+
+  background-image: -webkit-linear-gradient(unquote($pos), $gradient);
+  background-image: linear-gradient(unquote($pos_newsyntax), $gradient);
+}
+
+///
+/// Returns whether a value is a valid keyword direction.
+///
+/// @param {String} $value
+///
+/// @returns {Bool}
+///
+@function is-valid-keyword-direction($value) {
+  @return not not
+    index(
+      "top" "right" "bottom" "left" "to top" "to right" "to bottom" "to left"
+        "to top right" "to right top" "to bottom right" "to right bottom"
+        "to top left" "to left top" "to bottom left" "to left bottom",
+      $value
+    );
+}
+
+///
+/// Generates `placeholder` content for a given element.
+///
+/// @author romamatusevich
+///
+/// @link http://caniuse.com/#feat=css-placeholder caniuse
+/// @link http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-placeholder-attribute spec
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-placeholder MDN
+/// @link http://css-tricks.com/snippets/css/style-placeholder-text css-tricks
+///
+/// @output
+/// ```css
+///    &::-webkit-input-placeholder {
+///        <content>
+///    }
+///    &::-moz-placeholder {
+///        <content>
+///    }
+///    &:-ms-input-placeholder {
+///        <content>
+///    }
+/// ```
+///
+/// @example
+///   .selector {
+///     @include x-placeholder {
+///         color: #bada55;
+///         font-weight: bold;
+///     }
+///   }
+///
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content // Chrome, Safari, Opera;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  }
+
+  &::-moz-placeholder {
+    @content // Firefox 19+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  }
+
+  &:-ms-input-placeholder {
+    @content // IE 10+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  }
+}
+
+///
+/// Returns a number without unit.
+///
+/// Borrowed from https://github.com/zurb/foundation/blob/master/scss/foundation/_functions.scss
+///
+/// @param {Number} $value
+///
+/// @returns {Number} - 30px -> 30
+///
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+///
+/// This mixin enables you to use the CSS3 value `rem`, which lets you define
+/// property sizes based on the root element's font-size.
+///
+/// Outputs properties that use rem with a px fallback.
+/// It also takes px values and converts them to rem.
+///
+/// @author drublic
+///
+/// @link http://caniuse.com/rem caniuse
+/// @link http://www.w3.org/TR/css3-values/#relative0 spec
+///
+/// @param {String} $property
+/// @param {List} $values
+/// @param {Number} $default-font-size [16px] - optional
+///
+/// @require {Function} strip-unit
+///
+/// @output
+/// ```css
+///   <property>: <parsed value>px;
+///   <property>: <parsed value>rem;
+/// ```
+///
+/// @example
+///   .selector {
+///     @include x-rem(font-size, 1.3);
+///     @include x-rem(padding, 20px);
+///   }
+///
+// @mixin rem ($property, $values, $main-font-size: 16px) {
+
+//     // Empty list for all values in px
+//     $px-values: ();
+//     $rem-values: ();
+
+//     // Iterate over entries
+//     @each $value in $values {
+
+//         // If the value is zero or of a type that doesn’t need conversion, return the value untouched
+//         @if index(auto inherit initial none 0, $value) or type-of($value) != "number" {
+//             $px-values: append($px-values, $value);
+//             $rem-values: append($rem-values, $value);
+
+//         // Otherwise convert it properly
+//         } @else {
+//             $unit: unit($value);
+
+//             @if $unit == 'px' {
+//                 $px-values: append($px-values, #{strip-unit($value)} * 1px );
+//                 $rem-values: append($rem-values, (strip-unit($value) / strip-unit($main-font-size) * 1rem));
+//             } @else {
+//                 $px-values: append($px-values, ($value * $main-font-size) );
+//                 $rem-values: append($rem-values, #{$value} * 1rem);
+//             }
+
+//         }
+//     }
+
+//     // Return the property and its list of converted values
+//     #{$property}: #{$px-values};
+//     #{$property}: #{$rem-values};
+// }
+
+///
+/// Sass-mixin for CSS property `tab-size`, generates cross-browser-compatible
+/// `tab-size` output.
+///
+/// @author drublic
+///
+/// @link http://caniuse.com/css3-tabsize caniuse
+/// @link http://dev.w3.org/csswg/css-text/#tab-size1 spec
+///
+/// @param {Number} $value [4] - optional
+///
+/// @output
+/// ```css
+///  -moz-tab-size: <value>;
+///       tab-size: <value>;
+/// ```
+///
+/// @example
+///  .selector {
+///    @include x-tab-size(4);
+///   }
+///
+@mixin tab-size($value: 4) {
+  -moz-tab-size: $value;
+  tab-size: $value;
+}
+
+///
+/// Disables selection of content of a given element.
+///
+/// @author drublic
+///
+/// @link http://caniuse.com/user-select-none caniuse
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/user-select MDN
+///
+/// @param {none|auto} $value [none] - optional
+///
+/// @output
+/// ```css
+///   -webkit-user-select: <value>;
+///      -moz-user-select: <value>;
+///       -ms-user-select: <value>;
+///           user-select: <value>;
+/// ```
+///
+/// @example
+///   .selector {
+///     @include x-user-select;
+///   }
+///
+@mixin user-select($value: none) {
+  -webkit-user-select: $value;
+  -moz-user-select: $value;
+  -ms-user-select: $value;
+  user-select: $value;
+}
+
+@mixin text-cut($c: "") {
+  @if $c != "" {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $c;
+    /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+  } @else {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+@mixin clear-float {
+  &:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+@mixin clear-float1 {
+  &:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+@mixin position-center($w, $h, $position: absolute) {
+  position: $position;
+  left: 50%;
+  top: 50%;
+  width: $w;
+  height: $h;
+  margin-top: -($h/2);
+  margin-left: -($w/2);
+}
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// @mixin vw-calc($attr, $w, $vw) {
+//   #{$attr}: ($w * $vw)/100;
+// }
+
+@mixin triangle($arrow, $color: null, $size: null) {
+  width: 0;
+  height: 0;
+
+  @if $size==null {
+    $size: 6px;
+  }
+
+  @if $arrow== "up" {
+    @if $color==null {
+      $color: #e92543;
+    }
+
+    border-top: $size solid $color;
+    border-right: ($size - 2px) solid transparent;
+    border-left: ($size - 2px) solid transparent;
+  } @else if $arrow== "left" {
+    @if $color==null {
+      $color: #e92543;
+    }
+
+    border-left: $size solid $color;
+    border-top: ($size - 2px) solid transparent;
+    border-bottom: ($size - 2px) solid transparent;
+  } @else if $arrow== "right" {
+    @if $color==null {
+      $color: #e92543;
+    }
+
+    border-right: $size solid $color;
+    border-top: ($size - 2px) solid transparent;
+    border-bottom: ($size - 2px) solid transparent;
+  } @else {
+    @if $color==null {
+      $color: #4a89dc;
+    }
+
+    border-bottom: $size solid $color;
+    border-right: ($size - 3px) solid transparent;
+    border-left: ($size - 3px) solid transparent;
+  }
+}
+
+@mixin background(
+  $image,
+  $size: auto auto,
+  $position: center center,
+  $repeat: no-repeat
+) {
+  background-image: url($image);
+  @include background-size($size);
+  background-position: $position;
+  background-repeat: $repeat;
+}
+
+@mixin background-ratio2x(
+  $image,
+  $size: auto auto,
+  $position: center center,
+  $repeat: no-repeat
+) {
+  @include background($image, $size, $position, $repeat);
+  @media (-webkit-min-device-pixel-ratio: 2),
+    (min--moz-device-pixel-ratio: 2),
+    (min-resolution: 2dppx),
+    (min-resolution: 192dpi) {
+    background-image: url(str-insert($image, "@2x", -5));
+  }
+}
+
+@mixin background-ratio3x(
+  $image,
+  $size: auto auto,
+  $position: center center,
+  $repeat: no-repeat
+) {
+  @include background($image, $size, $position, $repeat);
+  @media (-webkit-min-device-pixel-ratio: 2),
+    (min--moz-device-pixel-ratio: 2),
+    (min-resolution: 2dppx),
+    (min-resolution: 192dpi) {
+    background-image: url(str-insert($image, "@2x", -5));
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 3),
+    (min--moz-device-pixel-ratio: 3),
+    (min-resolution: 3dppx),
+    (min-resolution: 192dpi) {
+    background-image: url(str-insert($image, "@3x", -5));
+  }
+}
+
+@mixin vertical-check($width: 10px, $color: #d1d1d1) {
+  &:after,
+  &:before {
+    height: 2px;
+    width: #{$width};
+    border-radius: 2px;
+    background-color: $color;
+    display: block;
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: 2px;
+  }
+
+  &:before {
+    width: #{$width * 80 / 100};
+    right: 50%;
+    transform: rotate(35deg);
+    transform-origin: right bottom;
+  }
+
+  &:after {
+    left: 50%;
+    transform: rotate(-45deg);
+    transform-origin: left bottom;
+  }
+}
+
+@mixin vertical-check-on($width: 10px, $color: red) {
+  @include vertical-check($width, $color);
+}
+
+@mixin draw-arrow(
+  $color: #000,
+  $width: 8px,
+  $arrow: "right",
+  $border-width: 1px
+) {
+  display: block;
+  width: $width;
+  height: $width;
+  border: $border-width solid $color;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+
+  @if $arrow== "right" {
+    transform: rotate(45deg);
+  } @else if $arrow== "left" {
+    transform: rotate(225deg);
+  } @else if $arrow== "down" {
+    transform: rotate(135deg);
+  } @else if $arrow== "up" {
+    transform: rotate(-45deg);
+  }
+}
+
+@mixin img-background(
+  $image,
+  $width,
+  $height,
+  $position: center center,
+  $repeat: no-repeat
+) {
+  display: block;
+  width: $width;
+  height: $height;
+  @include background($image, $width $height, $position, $repeat);
+}
+
+@mixin img-background2x(
+  $image,
+  $width,
+  $height,
+  $position: center center,
+  $repeat: no-repeat
+) {
+  display: block;
+  width: $width;
+  height: $height;
+
+  @include background-ratio2x(
+    $image,
+    $width $height,
+    $position: center center,
+    $repeat: no-repeat
+  );
+}
+
+@mixin vw-calc(
+  $property,
+  $px,
+  $pc: $px,
+  $bp: $content-width-mobile,
+  $viewport: 375
+) {
+  #{$property}: ($px / $viewport) * 100vw;
+  // @media screen and (min-width: 768) {
+  //   padding-top: 100px;
+  // }
+  @media screen and (min-width: $bp) {
+    #{$property}: #{$pc} + "px";
+  }
+}
+
+@mixin pr-calc(
+  $property,
+  $px,
+  $pc: $px,
+  $bp: $content-width-mobile,
+  $viewport: 375
+) {
+  #{$property}: #{$px} + "px";
+
+  @media screen and (min-width: $bp) {
+    #{$property}: #{$pc} + "px";
+  }
+}
